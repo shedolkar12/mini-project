@@ -1,0 +1,134 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+body{
+ background-color:#d7c797;   
+    }
+
+table, th, td {
+        border: 1px solid black;
+}
+
+#table{
+padding-top:5%;
+border: 1px solid black;
+height: 400px;
+}
+
+</style>
+<div class="container">
+<div class="row" style="width:600px; margin-left:25%; margin-right:25%;">
+<div class="" style="padding-top:10%;" >
+ 
+ <select id="dropdown">
+  <option value="0">New Recruits</option>
+  <option value="1">Weapons Inventory</option>
+  <option value="2">Food Inventory</option>
+</select>
+ 
+  Start Date:
+  <input id="start_date" type="date" name="start_date">
+  End Date:
+  <input id="end_date" type="date" name="end_date">
+</div>
+<hr>
+<div align="center" style="font-size:20px; font-weight:900"> Castle Black </div>
+<hr>
+<div id="table">
+<table>                                                                                    
+    <tr>
+      <th class="col-md-2"> Soldier Name </th>
+      <th class="col-md-2"> Experience </th>
+      <th class="col-md-2"> Strength </th>
+      <th class="col-md-2"> Join Date </th>
+    </tr>
+    {% for sold in data %}
+    <tr>
+      <td class="col-md-2">{{sold.name}}</td>
+      <td class="col-md-2">{{sold.exp}} </td>
+      <td class="col-md-2">{{sold.strength}}</td>
+      <td class="col-md-2">{{sold.join_date}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+</div>
+</div>
+
+<script>
+Arr = ['dropdown', 'start_date', 'end_date']
+for(i=0;i<Arr.length;i++){
+$('#'+Arr[i]).change(function(){           
+            get();  // AJAX function call when new option is selected             
+    });
+}
+function get(){
+            jQuery.ajax({
+              async: true,
+              type: "GET",
+              url: "http://localhost:8000/?",
+              data: "option=" + $('#dropdown').val()+ "&start_date=" + $('#start_date').val()+"&end_date=" + $('#end_date').val(),
+              success: function(response) {
+                    $('#table').replaceWith("<div id='table'></div>")
+                    
+                    str = "<table>"
+                    check = $('#dropdown').val()
+                     if(check=='0'){
+                       heading = '<tr>' +
+                     '<th class="col-md-2"> Soldier Name </th>' +
+                     '<th class="col-md-2"> Experience </th>' +
+                     '<th class="col-md-2"> Strength </th>' +
+                     '<th class="col-md-2"> Join Date </th>' +
+                     '</tr>'
+                        s = ''    
+                        for(i=0; i<response.length; i++){
+                            s = s+ "<tr><td class='col-md-2'>"+response[i]['name']+"</td><td class='col-md-2'>" + 
+                        response[i]['exp']+"</td><td class='col-md-2'>"+response[i]['strength'] + 
+                        "</td><td class='col-md-2'>"+response[i]['join_date'] + "</td></tr>"
+                           
+                        } 
+                      heading = heading + s   
+                      }  
+                       else if(check=='1'){
+                       heading = '<tr>' +
+                     '<th class="col-md-2"> Weapons </th>' +
+                     '<th class="col-md-2"> Quantity </th>' +
+                     '<th class="col-md-2"> Availability By </th>' +
+                     '</tr>'
+                        s = ''    
+                        for(i=0; i<response.length; i++){
+                            s = s+ "<tr><td class='col-md-2'>"+response[i]['weapon']+"</td><td class='col-md-2'>" + 
+                        response[i]['quantity']+"</td><td class='col-md-2'>"+response[i]['available'] + 
+                          "</td></tr>"
+                           
+                        } 
+                      heading = heading + s 
+                        }  
+                       else if(check=='2'){
+                       heading = '<tr>' +
+                     '<th class="col-md-2"> Food </th>' +
+                     '<th class="col-md-2"> Storage(unit quantity) </th>' +
+                     '<th class="col-md-2"> Expiery Date </th>' +
+                     '</tr>'
+                        s = ''    
+                        for(i=0; i<response.length; i++){
+                            s = s+ "<tr><td class='col-md-2'>"+response[i]['food']+"</td><td class='col-md-2'>" + 
+                        response[i]['storage']+"</td><td class='col-md-2'>"+response[i]['expire'] + 
+                          "</td></tr>"
+                           
+                        } 
+                      heading = heading + s 
+
+                        } 
+                        str = str + heading + '</table>' 
+                     $('#table').append(str) 
+                }
+            });
+        }
+
+    
+</script>
+</html>

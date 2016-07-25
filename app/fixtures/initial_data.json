@@ -1,0 +1,143 @@
+[
+  {
+    "model": "app.soldiers",
+    "pk": 1,
+    "fields": {
+      "name": "Darrel Gordon",
+      "exp": 3,
+      "strength": "Sword",
+      "join_date": "2006-12-21"
+    }
+  },
+  {
+    "model": "app.weapons",
+    "pk": 1,
+    "fields": {
+      "weapon": "Valariyan Sword",
+      "quantity": 23,
+      "available": "2016-08-12"
+    }
+  },
+
+  {
+    "model": "app.food",
+    "pk": 1,
+    "fields": {
+      "food": "Bananas",
+      "storage": 200,
+      "expire": "2017-08-12"
+    }
+  },
+  {
+    "model": "app.soldiers",
+    "pk": 2,
+    "fields": {
+      "name": "Claude Ford",
+      "exp": 10,
+      "strength": "Archery",
+      "join_date": "2012-12-21"
+    }
+  },
+  {
+    "model": "app.weapons",
+    "pk": 2,
+    "fields": {
+      "weapon": "Spear",
+      "quantity": 120,
+      "available": "2016-08-12"
+    }
+  },
+  {
+    "model": "app.food",
+    "pk": 2,
+    "fields": {
+      "food": "Breads",
+      "storage": 400,
+      "expire": "2020-08-12"                                                                                
+    }
+  },
+  {
+    "model": "app.soldiers",
+    "pk": 3,
+    "fields": {
+      "name": "Jerome Schmidt",
+      "exp": 6,
+      "strength": "Spear",
+      "join_date": "2011-12-21"
+    }
+  },
+  {
+    "model": "app.weapons",
+    "pk": 3,
+    "fields": {
+      "weapon": "Knife",
+      "quantity": 120,
+      "available": "2011-08-12"
+    }
+  },
+  {
+    "model": "app.food",
+    "pk": 3,
+    "fields": {
+      "food": "Meat",
+      "storage": 100,
+      "expire": "2016-08-12"                                                                                
+    }
+  },
+  {
+    "model": "app.soldiers",
+    "pk": 4,
+    "fields": {
+      "name": "Micheal Gregory",
+      "exp": 1,
+      "strength": "Spear",
+      "join_date": "2014-11-21"
+    }
+  },
+  {
+    "model": "app.weapons",
+    "pk": 4,
+    "fields": {
+      "weapon": "Sword1",
+      "quantity": 200,
+      "available": "2014-08-12"
+    }
+  },
+  {
+    "model": "app.food",
+    "pk": 4,
+    "fields": {
+      "food": "Beef",
+      "storage": 100,
+      "expire": "2017-08-12"                                                                                
+    }
+  },
+  {
+    "model": "app.soldiers",
+    "pk": 5,
+    "fields": {
+      "name": "Trevor Wilkins",
+      "exp": 6,
+      "strength": "Sword",
+      "join_date": "2011-12-21"
+    }
+  },
+  {
+    "model": "app.weapons",
+    "pk": 5,
+    "fields": {
+      "weapon": "Axe",
+      "quantity": 100,
+      "available": "2001-08-12"
+    }
+  },
+  {
+    "model": "app.food",
+    "pk": 5,
+    "fields": {
+      "food": "Pizzas",
+      "storage": 100,
+      "expire": "2016-08-12"                                                                                
+    }
+  }
+]
